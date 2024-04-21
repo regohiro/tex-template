@@ -1,0 +1,5 @@
+build/
+z/
+
+**/.DS_Store
+**/*.log
