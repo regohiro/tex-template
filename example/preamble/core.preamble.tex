@@ -1,0 +1,81 @@
+% LuaTeX-ja の使い方 https://ja.osdn.net/projects/luatex-ja/wiki/LuaTeX-ja%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
+
+% CreationDate, ModDate, Trailer IDを削除して再現可能なPDFを作成できる
+% https://www.pragma-ade.com/general/manuals/luatex.pdf
+\pdfvariable suppressoptionalinfo 608
+
+
+%% lualatexの設定
+\usepackage{luatexja}
+\usepackage{luatexja-fontspec}
+\usepackage[
+  % ipaex,
+  haranoaji,
+]{luatexja-preset} % フォント指定
+
+%% pdfの設定
+\usepackage[
+  hidelinks, % リンクに枠線を付けない
+  setpagesize=false, % hyperrefでページサイズを変更しない
+  pdfversion=2.0,
+  pdfa, % pdf/a準拠
+  pdfpagemode=UseNone, % PDFビューワでサイドバーなどを自動で開かない
+  pdfcreator={}, % LaTeX with hyperrefを埋め込まない
+]{hyperref} % pdfの目次、メタデータ
+% \usepackage{pdflscape} % pdfのページを横向きにする
+
+
+%% unicode設定
+\usepackage{newunicodechar}
+% Replace "、" with "，"
+\newunicodechar{、}{，}
+% Replace "。" with "．"
+\newunicodechar{。}{．}
+
+
+%% Environment
+\usepackage{amsmath, amsthm, amssymb}
+\theoremstyle{definition}
+\newtheorem{definition}{定義}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{補題}
+\newtheorem{corollary}{系}
+\newtheorem{remark}{注意}
+\renewcommand{\proofname}{\textbf{証明}}
+
+
+%% Reference（以下の\usepackage{biblatex}のどちらかを選ぶ）
+%% 引用時の表示が[著者イニシャル＋年]
+%% 日本語論文の引用時，[岩渡22]と変な感じになってしまうため，[IW22]の形にするためにbibファイルに以下の処理を加える：bibファイル冒頭に「@preamble{ " \newcommand{\noop}[1]{} " }」を追記し，和文論文の各著者の前に\noopコマンドを使ってイニシャルを明記しておく．例：bibファイルで「渡邉洋平」となっているところを「\noop{W}渡邉洋平」とする．
+%% 引用時の表示が[番号]
+\usepackage[
+  backend=biber, 
+  style=numeric-comp, 
+  sorting=ynt, 
+  sortcites=true, 
+  backref=false, 
+  date=year, 
+  maxnames=100, 
+  minalphanames=3, 
+  maxalphanames=3, 
+  isbn=false, 
+  doi=false, 
+  url=false,
+  defernumbers=true,
+]{biblatex}
+\DeclareFieldFormat[online]{date}{\thefield{year}年\thefield{month}月\thefield{day}日 閲覧}
+%% 以下は表示のカスタマイズ
+\DeclareFieldFormat*{title}{\mkbibquote{#1\adddot}}	%% タイトルの後にピリオドが来るように
+\renewcommand\multicitedelim{\addcomma\space}	%% 複数引用時に [A; B; C] となるところを [A, B, C] に変更
+\AtEveryBibitem{
+  \iffieldequalstr{langid}{japanese}
+    {\DeclareDelimFormat{finalnamedelim}{\addcomma\space}}
+    {\DeclareDelimFormat{finalnamedelim}{\addcomma\space\bibstring{and}\space}}
+}	%% 日本語論文（langind={japanese}のbibitem）の最後の著者の手前の and を削除し，和文論文引用時の違和感を排除
+
+
+%% Macro
+\newcommand{\two}{\mathrm{I}\hspace{-1.2pt}\mathrm{I}}
+\newcommand{\todo}[1]{\textcolor{blue}{\textbf{$\langle \! \langle$To Do: #1$\rangle \! \rangle$}}}
+\newcommand{\iwmt}[1]{\textcolor{green}{ $\langle \! \langle$岩本: ``#1"$\rangle \! \rangle$}}
+\newcommand{\wtnb}[1]{\textcolor{magenta}{ $\langle \! \langle$渡邉: ``#1"$\rangle \! \rangle$}}

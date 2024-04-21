@@ -1,0 +1,82 @@
+%% Math
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{resizegather}
+
+%% cref
+%% http://tug.ctan.org/tex-archive/macros/latex/contrib/cleveref/cleveref.pdf
+\usepackage{cleveref} 
+\crefname{enumi}{}{}
+\crefname{equation}{式}{式}
+\crefname{figure}{図}{図}
+\crefname{table}{表}{表}
+\crefname{algorithm}{アルゴリズム}{アルゴリズム}
+\crefformat{section}{#2#1#3節}
+\crefformat{subsection}{#2#1#3項}
+\newcommand{\crefpairconjunction}{と}
+\newcommand{\crefrangeconjunction}{から}
+\newcommand{\crefmiddleconjunction}{、}
+\newcommand{\creflastconjunction}{、および}
+\let\normalref\ref
+\renewcommand{\ref}{\cref}
+
+
+%% Figure
+% \usepackage{graphicx}
+% \usepackage{lmodern}
+% 並列実行するとsvg-inkscapeディレクトリが競合するのでinkscapepathをjobname付きで指定
+% \usepackage[
+%   inkscapelatex=false,
+%   inkscapepath=./svg-inkscape-\jobname,
+%   inkscapeopt=--export-text-to-path,
+% ]{svg}
+% \usepackage{pdfpages}
+% \usepackage{here}
+% \usepackage{subcaption}
+% \usepackage{multirow}
+% \usepackage{color}
+% \usepackage{colortbl} % tabularのセルに色つける
+% \usepackage{makecell} % \thead でセル内改行ができる
+% \usepackage{tablefootnote} % tabular内でfootnoteを作れる
+% \usepackage{siunitx} % 小数点揃え
+% \usepackage{tikz}
+% \usetikzlibrary{intersections, calc, arrows, positioning, arrows.meta}
+% \usepackage{bytefield}
+% \usepackage{tabularx}
+% \newcolumntype{R}{>{\raggedleft\arraybackslash}X} % 右揃え
+% \newcolumntype{C}{>{\centering\arraybackslash}X} % 中央揃え
+% \usepackage{arydshln}
+% \usepackage{booktabs}
+
+%% Cryptocode
+%% https://github.com/arnomi/cryptocode
+\usepackage[
+  lambda,
+  operators,
+  advantage,
+  sets,
+  adversary,
+  landau,
+  probability,
+  notions,
+  logic,
+  ff,
+  mm,
+  primitives,
+  events,
+  complexity,
+  asymptotics,
+  keys
+]{cryptocode}
+
+%% Others
+\usepackage{xurl}
+% \usepackage{url}
+\usepackage{bm} % 記号も太字
+% \usepackage{emoji}
+\usepackage{enumitem} % itemlabelなどの詳細設定
+% \usepackage{comment}
+% \usepackage{subfiles}
+% \usepackage{todonotes}
+% \setuptodonotes{backgroundcolor=red!25,bordercolor=red,linecolor=red}
+% \setlength{\marginparwidth}{2cm} % todonotesが収まるように

@@ -1,0 +1,25 @@
+\newcommand{\relgen}{\mathcal{R}} % relation generator
+\newcommand{\lang}{\mathcal{L}} % language
+\newcommand{\aux}{\mathrm{aux}} % auxiliary information
+\renewcommand{\vec}[1]{\bm{#1}} % vector
+
+\newcommand{\Setup}{\mathsf{Setup}} % setup
+\newcommand{\Prove}{\mathsf{Prove}} % prove
+\newcommand{\Verify}{\mathsf{Verify}} % verify
+\newcommand{\Sim}{\mathsf{Sim}} % simulate
+\newcommand{\rndgen}{\mathsf{RndGen}} 
+\newcommand{\com}{\mathsf{Com}} 
+\newcommand{\io}{\mathsf{i/o}}
+\newcommand{\midd}{\mathsf{mid}}
+
+\newcommand{\where}{\;\mathrm{where}\;}
+\newcommand{\suchthat}{\;\mathrm{s.t.}\;}
+\newcommand{\for}{\;\mathrm{for}\;}
+
+\newcommand{\condprobmulti}[2]{
+  \condprob{
+    \begin{array}{c}#1\end{array}
+  }{
+    \begin{array}{c}#2\end{array}
+  }
+} % condprob with line break support

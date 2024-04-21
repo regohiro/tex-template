@@ -1,0 +1,35 @@
+\documentclass[twocolumn, a4paper]{ltjsarticle}
+
+\input{preamble/core.preamble.tex}
+\input{preamble/abstract.preamble.tex}
+\input{preamble/pkg.preamble.tex}
+\input{preamble/macro.preamble.tex}
+\addbibresource{main.bib}
+
+\title{タイトル}
+\affiliation{所属}
+\supervisor{指導教員}
+\studentid{9999999}
+\author{氏名}
+\headtitle{20xx年度}
+
+\hypersetup{
+  pdftitle={タイトル},
+  pdfauthor={著者}
+}
+
+\begin{document}
+
+\maketitle
+
+\input{body.tex}
+
+{
+  \small
+  \renewcommand*{\bibfont}{\small}
+  \begin{refcontext}[sorting=anyt]
+    \printbibliography[heading=bibintoc, title=参考文献, notkeyword=me]
+  \end{refcontext}
+}
+
+\end{document}
