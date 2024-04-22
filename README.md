@@ -22,6 +22,7 @@ code .
 Open workspace in devcontainer and wait for it to boot up
 
 Compile all
-```
+
+```sh
 make
 ```
