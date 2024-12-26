@@ -1,124 +1,16 @@
 {
-    "name": "latex",
+    "name": "tex-template",
     "dockerComposeFile": ["docker-compose.yml"],
     "service": "vscode",
     "runServices": ["vscode"],
     "shutdownAction": "stopCompose",
     "workspaceFolder": "/workspace",
-    "postCreateCommand": "",
     "customizations": {
         "vscode": {
             "extensions": [
                 "james-yu.latex-workshop",
-                // Other helpers
-                // "shardulm94.trailing-spaces",
-                "stkb.rewrap" // rewrap comments after n characters on one line
-            ],
-            "settings": {
-                // General settings
-                // "files.eol": "\n",
-                "workbench.preferredHighContrastColorTheme": "Default Dark+",
-                "workbench.colorTheme": "Default Dark+",
-                "editor.fontFamily": "Myrica M, Consolas, 'Courier New', monospace",
-                "editor.unicodeHighlight.ambiguousCharacters": false,
-                "editor.unicodeHighlight.allowedCharacters": {
-                  "　": true
-                },
-                "editor.suggest.showWords": false,
-                "bracket-pair-colorizer-2.excludedLanguages": [
-                  "latex",
-                  "tex"
-                ],
-                "git.decorations.enabled": false,
-                "editor.guides.bracketPairs": false,
-                "editor.bracketPairColorization.enabled": true,
-                "files.exclude": {
-                  "**/indent.log": true,
-                  "**/.svn": true,
-                  "**/.hg": true,
-                  "**/CVS": true,
-                  "**/.DS_Store": true,
-                  "**/Thumbs.db": true,
-                  "**/*.dvi": true,
-                  "**/*.aux": true,
-                  "**/*.fls": true,
-                  "**/*.atfi": true,
-                  "**/*.nav": true,
-                  "**/*.snm": true,
-                  "**/*.toc": true,
-                  "**/*.asv": true,
-                  "**/*.stderr": true,
-                  "**/*.stdout": true,
-                  "**/_minted-*/": true,
-                  "**/_markdown_*/": true,
-                  "**/pythontex-files-*/": true,
-                  "**/*.pytxcode": true,
-                  "**/*.markdown.in": true,
-                  "**/*.markdown.lua": true,
-                  "**/*.fdb_latexmk": true,
-                  "**/*.synctex.gz": true,
-                  "**/__latexindent_temp.tex": true,
-                  "**/*.pyg": true,
-                  "**/*.out": true,
-                  "**/*.bbl": true,
-                  "**/*.blg": true,
-                  "**/*.bcf": true,
-                  "**/*-blx.bib": true,
-                  "**/*.run.xml": true,
-                  "**/*.texmfcache": true,
-                  "**/svg-inkscape*": true,
-                  "**/*.synctex(busy)": true
-                },
-
-                // Latex settings
-                "latex-workshop.message.badbox.show": false, // hide underfull warnings
-                "latex-workshop.view.pdf.viewer": "tab",
-                "latex-workshop.latex.autoBuild.run": "never",
-                "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
-                // "latex-workshop.linting.chktex.enabled": true,
-                // "latex-workshop.linting.chktex.exec.path": "chktex",
-                "latex-workshop.latex.clean.subfolder.enabled": true,
-                "latex-workshop.latex.autoClean.run": "onBuilt",
-                "latex-workshop.latexindent.path": "latexindent",
-                "latex-workshop.latexindent.args": [
-                    "-c",
-                    "%DIR%/",
-                    "%TMPFILE%",
-                    "-y=defaultIndent: '%INDENT%'"
-                ],
-                "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
-                "latex-workshop.latex.tools": [
-                  {
-                    "name": "init",
-                    "command": "mkdir",
-                    "args": [
-                      "-p",
-                      "%WORKSPACE_FOLDER%/build"
-                    ]
-                  },
-                  {
-                    "name": "latexmk",
-                    "command": "latexmk",
-                    "args": [
-                      "-outdir=%WORKSPACE_FOLDER%/build",
-                      "-jobname=%RELATIVE_DIR%",
-                      "-r",
-                      "%WORKSPACE_FOLDER%/.latexmkrc",
-                      "-cd",
-                      "%WORKSPACE_FOLDER%/%RELATIVE_DIR%/main.tex"
-                    ]
-                  }
-                ],
-                "latex-workshop.latex.recipes": [
-                  {
-                    "name": "lualatex",
-                    "tools": [
-                      "init",
-                      "latexmk"
-                    ]
-                  }
-                ]
-            }
+                "stkb.rewrap"
+            ]
         }
     }
 }
