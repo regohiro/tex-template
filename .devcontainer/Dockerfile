@@ -22,10 +22,22 @@ RUN apt-get install -y --no-install-recommends \
 && rm -rf /var/lib/apt/lists/* \
 && apt-get clean
 
+# Set user
+USER vscode
+
+# Install Rust
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+RUN echo "source $HOME/.cargo/env" >> $HOME/.bashrc
+ENV PATH="/home/vscode/.cargo/bin:${PATH}"
+
+# Install tex-fmt (formatter)
+RUN cargo install tex-fmt
+
 # Set workspace
 WORKDIR /workspace
 
 # Check
 RUN tlmgr version && \
     latexmk -version && \
-    texhash --version
+    texhash --version && \
+    tex-fmt --version     

@@ -1,6 +1,7 @@
 services:
   vscode:
-    image: latex_dc:2023
+    image: latex-template
+    container_name: latex-template_dc
     build: .
     volumes:
       - ../:/workspace

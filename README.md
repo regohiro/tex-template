@@ -10,7 +10,7 @@
 Clone this repository
 
 ```sh
-git clone https://github.com/k1910177/tex-template sample-project
+git clone https://github.com/rknhr-uec/tex-template sample-project
 ```
 
 Open in VsCode
